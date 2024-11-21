@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { Fragment, useState, useEffect } from "react";
-import ListCompanyAll from "@/components/company-all/company-list-item-all.component";
-import { Empresa } from "@/types/empresa";
+import ListCompanyAll from '@/components/company-all/company-list-item-all.component';
+import { Empresa } from '@/types/empresa';
+import { useEffect, useState } from 'react';
 
 export default function ListCompanies() {
   const [companiesList, setCompaniesList] = useState<Empresa[]>([]);
@@ -13,7 +13,7 @@ export default function ListCompanies() {
 
   const fetchCompanies = async () => {
     try {
-      const response = await fetch('http://localhost:3400/companies');
+      const response = await fetch('https://api.whatlead.com.br/companies');
       if (response.ok) {
         const data = await response.json();
         setCompaniesList(data);
@@ -34,13 +34,14 @@ export default function ListCompanies() {
     setError('');
     setSuccess('');
 
-    const token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndoYXRsZWFkLmNvbS5ickBnbWFpbC5jb20iLCJzdWIiOiI2NmRlNjY4ODQ3ZTFkNjY0ZjYxZDU4NGQiLCJpYXQiOjE3MjU4NTYxNjUsImV4cCI6MTcyNTg1OTc2NX0.gTRvZOjGhJWgHWZudYhTBl-ddeIfsJO89P7cFPPuRdQ";
+    const token =
+      'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6IndoYXRsZWFkLmNvbS5ickBnbWFpbC5jb20iLCJzdWIiOiI2NmRlNjY4ODQ3ZTFkNjY0ZjYxZDU4NGQiLCJpYXQiOjE3MjU4NTYxNjUsImV4cCI6MTcyNTg1OTc2NX0.gTRvZOjGhJWgHWZudYhTBl-ddeIfsJO89P7cFPPuRdQ';
 
     try {
-      const response = await fetch('http://localhost:3400/companies', {
+      const response = await fetch('https://api.whatlead.com.br/companies', {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${token}`,
+          Authorization: `Bearer ${token}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
@@ -66,7 +67,10 @@ export default function ListCompanies() {
 
   return (
     <>
-      <div className="dark:bg-darkBlue bg-slate-50 text-white p-8 min-h-[100vh]" suppressHydrationWarning>
+      <div
+        className="dark:bg-darkBlue bg-slate-50 text-white p-8 min-h-[100vh]"
+        suppressHydrationWarning
+      >
         <div className="flex flex-col justify-center m-2 p-4 bg-white dark:bg-roxouro1 border border-neutral-200 dark:border-darkBlue/30 shadow-md hover:shadow-lg rounded-2xl h-20">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
@@ -95,7 +99,9 @@ export default function ListCompanies() {
             />
           </div>
           <div className="mb-2 flex items-center">
-            <label className="mr-2 text-gray-700 dark:text-gray-300">Ativa:</label>
+            <label className="mr-2 text-gray-700 dark:text-gray-300">
+              Ativa:
+            </label>
             <input
               type="checkbox"
               checked={active}

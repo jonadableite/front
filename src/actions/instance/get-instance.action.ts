@@ -1,6 +1,6 @@
-"use server";
-import axios from "axios";
-import type { Instancia } from "@/types/instancia/instancia";
+'use server';
+import type { Instancia } from '@/types/instancia/instancia';
+import axios from 'axios';
 
 export const GetInstancesAction = async () => {
   try {
@@ -8,14 +8,14 @@ export const GetInstancesAction = async () => {
       `https://evo.whatlead.com.br/instance/fetchInstances/instance/fetchInstances`,
       {
         headers: {
-          "Content-Type": "application/json",
-          apikey: `B6D711FCDE4D4FD5936544120E713976`,
+          'Content-Type': 'application/json',
+          apikey: `429683C4C977415CAAFCCE10F7D57E11`,
         },
-      }
+      },
     );
     return response.data;
   } catch (error) {
-    console.error("Erro ao buscar instâncias:", error);
+    console.error('Erro ao buscar instâncias:', error);
     //throw new Error("Erro ao buscar instâncias");
   }
 };
